@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const app = express();
 
+// Middleware to parse JSON request bodies
+app.use(express.json());
 
 // Define the route to create Jira issue
-app.post('/createJira', async (req, res) => {
+router.post('/createJira', async (req, res) => {
     const url = 'https://anideepkalia71.atlassian.net/rest/api/3/issue';
-
-    const API_TOKEN = 'ATATT3xFfGF02jMIoAgsO8lF2qbol5csKa6xYu3O9afNcbebKeDkAAx76LM5WmN5uojwJ44R0PRNGJ9xcgbs2f2cBCSnF2iczb67rpNQInnRRxJ_Qvkp0-H5XN2jtUIJnoijMbLGz4gqK30tPsBH-l_dDSOYgr-t09Jx--j_y_weAjKFAeQOUko=CFEC54EA';
+    const API_TOKEN = process.env.JIRA_TOKEN;  // Accessing the GitHub secret
     const auth = {
         username: 'anideepkalia71@gmail.com',
         password: API_TOKEN
@@ -58,3 +60,9 @@ app.post('/createJira', async (req, res) => {
     }
 });
 
+app.use(router);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
