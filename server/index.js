@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 app.use(express.json())
 app.use(cors())
 
-app.use('/api/ticket',require('./routes/superadmin'))      
+app.use('/api',require('./routes/jira_issue'))      
 
 
 
