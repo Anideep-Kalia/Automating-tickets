@@ -96,7 +96,7 @@ Set the following environment variables in your GitHub repository settings (unde
 
 ## Webhook Configuration
 
-1. **Set Up GitHub Webhook**
+**Set Up GitHub Webhook**
    - Navigate to your GitHub repository settings.
    - Configure a webhook with the following details:
      - Payload URL: `http://your-ec2-instance-ip:port/create-jira`
