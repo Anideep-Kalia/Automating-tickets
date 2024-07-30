@@ -8,10 +8,10 @@ app.use(express.json());
 
 // Define the route to create Jira issue
 router.post('/createJira', async (req, res) => {
-    const url = 'https://anideepkalia71.atlassian.net/rest/api/3/issue';
+    const url = process.env.JIRA_HOST;
     const API_TOKEN = process.env.JIRA_TOKEN;  // Accessing the GitHub secret
     const auth = {
-        username: 'anideepkalia71@gmail.com',
+        username: process.env.JIRA_EMAIL,
         password: API_TOKEN
     };
 
